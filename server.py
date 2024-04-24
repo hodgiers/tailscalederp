@@ -38,8 +38,7 @@ def fetch_and_save_ips():
         # Log failure
         logger.error(f"Failed to fetch and save IPs. Error: {str(e)}")
 
-def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
-    fetch_and_save_ips()
+def run_http_server(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
     server_address = ('', 8000)
     httpd = server_class(server_address, handler_class)
     print("Serving at port 8000")
@@ -56,6 +55,12 @@ def main():
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
+
+    # Fetch and save IPs initially
+    fetch_and_save_ips()
+
+    # Run the HTTP server
+    run_http_server()
 
     # Schedule the job to run every hour
     schedule.every().hour.do(fetch_and_save_ips)
