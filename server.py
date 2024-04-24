@@ -18,7 +18,7 @@ def fetch_and_save_ips():
         def extract_ips(obj):
             if isinstance(obj, dict):
                 for key, value in obj.items():
-                    if 'IPv4' == key or 'IPv6' == key:
+                    if 'IPv4' == key:
                         ips.append(value)
                     else:
                         extract_ips(value)
@@ -30,7 +30,7 @@ def fetch_and_save_ips():
 
         with open('data.txt', 'w') as file:
             for ip in ips:
-                file.write(f"{ip}\n")
+                file.write(f"{ip}/32\n")
 
         # Log success
         logger.info("IPs fetched and saved successfully.")
