@@ -39,9 +39,9 @@ def fetch_and_save_ips():
         logger.error(f"Failed to fetch and save IPs. Error: {str(e)}")
 
 def run_http_server(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
-    server_address = ('', 8000)
+    server_address = ('', 8030)
     httpd = server_class(server_address, handler_class)
-    print("Serving at port 8000")
+    print("Serving at port 8030")
     httpd.serve_forever()
 
 def main():
