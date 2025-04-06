@@ -3,6 +3,9 @@ services:
   fetcher:
     build: .
     volumes:
-      - ${PWD}:/app  # Maps the current working directory to /app in the container
+      - tailscalederp:/app  # Maps the current working directory to /app in the container
     ports:
       - "8000:8000"
+volumes:
+  tailscalederp:
+    external: true      
