@@ -4,7 +4,7 @@ services:
     volumes:
       - tailscalederp:/app  # Maps the current working directory to /app in the container
     ports:
-      - "8002:8002"
+      - "8030:8030"
 volumes:
   tailscalederp:
     external: true      
